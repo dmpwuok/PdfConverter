@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<button id="btnPDF" class="btn btn-primary">Generate PDF</button>
+
+<div id="pdfContainer" style="text-align:center";>
+    <h1>Student List</h1>
+    <table>
+        <thead>
+            <tr>StudentId</tr>
+        </thead>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $("#btnPDF").click(function () {
+        var sHtml = $("#pdfContainer").html();
+        sHtml = sHtml.replace(/</g, "StrTag").replace(/>/g, "EndTag");
+        window.open('../Home/CreatePDF?html=' + sHtml, '_blank');
+    });
+</script>
